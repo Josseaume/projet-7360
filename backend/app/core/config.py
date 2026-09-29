@@ -10,6 +10,12 @@ class Settings(BaseSettings):
     api_prefix: str = "/api/v1"
     cors_origins: str = "*"
 
+    database_url: str = "sqlite:///./app.db"
+
+    secret_key: str = "change-me"
+    jwt_algorithm: str = "HS256"
+    access_token_expire_minutes: int = 60 * 24
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
